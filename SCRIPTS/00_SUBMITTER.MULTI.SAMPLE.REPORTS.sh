@@ -14,37 +14,37 @@ TIMESTAMP=`date '+%F.%H-%M-%S'`
 
 # set
 
-# # REFINE GENOTYPES FOR SNPS USING ALLELE FREQS FROM 1KG AND ExAC
-# 
-# /isilon/sequencing/Kurt/Programs/Java/jdk1.7.0_25/bin/java -jar \
-# /isilon/sequencing/CIDRSeqSuiteSoftware/gatk/GATK_3/GenomeAnalysisTK-nightly-2015-01-15-g92376d3/GenomeAnalysisTK.jar \
-# -T CalculateGenotypePosteriors \
-# -R $REFERENCE \
-# --variant /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/all/variants.all.vcf.gz \
-# --supporting $P3_1KG \
-# --supporting $ExAC \
-# --disable_auto_index_creation_and_locking_when_reading_rods \
-# -et NO_ET \
-# -K $KEY \
-# -o /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf
-# 
-# # ADD/UPDATE INFO ANNOTATIONS
-# 
-# /isilon/sequencing/Kurt/Programs/Java/jdk1.7.0_25/bin/java -jar \
-# /isilon/sequencing/CIDRSeqSuiteSoftware/gatk/GATK_3/GenomeAnalysisTK-3.3-0/GenomeAnalysisTK.jar \
-# -T VariantAnnotator \
-# -R $REFERENCE \
-# --variant /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf \
-# -L /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf \
-# -A SampleList \
-# -A GCContent \
-# -A VariantType \
-# -A GenotypeSummaries \
-# -A AlleleBalance \
-# --disable_auto_index_creation_and_locking_when_reading_rods \
-# -et NO_ET \
-# -K $KEY \
-# -o /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/$PROJECT".REFINED.vcf"
+# REFINE GENOTYPES FOR SNPS USING ALLELE FREQS FROM 1KG AND ExAC
+
+/isilon/sequencing/Kurt/Programs/Java/jdk1.7.0_25/bin/java -jar \
+/isilon/sequencing/CIDRSeqSuiteSoftware/gatk/GATK_3/GenomeAnalysisTK-nightly-2015-01-15-g92376d3/GenomeAnalysisTK.jar \
+-T CalculateGenotypePosteriors \
+-R $REFERENCE \
+--variant /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/all/variants.all.vcf.gz \
+--supporting $P3_1KG \
+--supporting $ExAC \
+--disable_auto_index_creation_and_locking_when_reading_rods \
+-et NO_ET \
+-K $KEY \
+-o /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf
+
+# ADD/UPDATE INFO ANNOTATIONS
+
+/isilon/sequencing/Kurt/Programs/Java/jdk1.7.0_25/bin/java -jar \
+/isilon/sequencing/CIDRSeqSuiteSoftware/gatk/GATK_3/GenomeAnalysisTK-3.3-0/GenomeAnalysisTK.jar \
+-T VariantAnnotator \
+-R $REFERENCE \
+--variant /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf \
+-L /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/variants.all.refined.vcf \
+-A SampleList \
+-A GCContent \
+-A VariantType \
+-A GenotypeSummaries \
+-A AlleleBalance \
+--disable_auto_index_creation_and_locking_when_reading_rods \
+-et NO_ET \
+-K $KEY \
+-o /isilon/sequencing/Seq_Proj/$PROJECT/JOINT_CALL/$MDNA_HASH_ADDRESS/VQSR/$PROJECT".REFINED.vcf"
 
 sed 's/\r//g' $SAMPLE_SHEET \
 | awk 'NR>1' \

@@ -1,5 +1,5 @@
 #$ -S /bin/bash
-#$ -q sunrhel3.cidr.jhmi.edu@bigmem.q,sunrhel4.cidr.jhmi.edu@bigmem.q
+#$ -q sunrhel4.cidr.jhmi.edu@bigmem.q
 #$ -cwd
 #$ -V
 #$ -p -1000
